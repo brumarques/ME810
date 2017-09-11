@@ -5,12 +5,17 @@ date: "11 de setembro de 2017"
 output: html_document
 ---
 # Introdução
-123
+```{r, echo=FALSE }
+library(readxl) #biblioteca para ler o excel
+data <- read_excel("C:/Users/TEMP/Downloads/ME710%2FME810 (2).xlsx") #leitura dos dados
+plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #grafico de dispersao
+
+```
 
 # Objetivo
 
 # Conclusão
-```{r }
+```{r,echo=FALSE }
 
 ```
 
