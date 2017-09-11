@@ -5,6 +5,11 @@ date: "11 de setembro de 2017"
 output: html_document
 ---
 # Introdução
+
+A *start up* Validari consiste na criação de *software* para validação de métodos analiticos na indústria farmacêutica. O objetivo do nosso projeto é explicar como é feita a análise da Linearidade da Validação.  
+Avaliar e revisar a metodologia usada para validação da linearidade. Explicando de forma clara e objetiva por que a metodologia é a mais adequada.  
+O grupo fará um relatório em R para o cliente contendo as etapas para realizar o teste de linearidade com base na teoria das referências, explicando o passo a passo de maneira didática.  
+
 ```{r, echo=FALSE }
 library(readxl) #biblioteca para ler o excel
 library(knitr)
