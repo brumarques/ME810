@@ -41,6 +41,23 @@ plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #
 | Máximo | `r max(data$Concentração)`        | `r formatC(max(data$Área), digits = 7)` |
 | Média  | `r mean(data$Concentração)`         | `r formatC(mean(data$Área), digits = 7)` |
 
+
+# Regressão linear e significância dos parâmetros (curva analítica)  
+
+Estatisticamente, a melhor forma de avaliar a linearidade é através da regressão linear, pois é a metodologia que estuda a relação entre uma variável de interesse (Área) e outras variáveis (Concentração). Com a regressão, vemos qual a melhor reta $(y=ax + b)$ a ser traçada que se ajusta melhor nesses dados, ou seja, qual reta faz com que a distância entre os pontos e a reta ajustada seja a menor possível, minimizando o erro e estimando com maior precisão, por isso a estimação é feita através do Método dos Mínimos Quadrados.  
+
+```{r,echo=FALSE }
+fit = lm(Concentração~Área, data=data)
+plot(Concentração~Área, data=data, main="Curva Analítica")
+abline(fit, col="red")
+
+```
+
+Acima, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
+$$Y = `r round(coefficients(fit)[2], 6)`X + `r round(coefficients(fit)[1], 3)`$$
+
+
+
 # Conclusão
 ```{r,echo=FALSE }
 
