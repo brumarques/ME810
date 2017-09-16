@@ -50,13 +50,13 @@ Estatisticamente, a melhor forma de avaliar a linearidade é através da regress
 fit = lm(Concentração~Área, data=data)
 plot(Concentração~Área, data=data, main="Curva Analítica")
 abline(fit, col="red")
+r= summary(fit)$r.squared
 
 ```
 
 Acima, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
 $$Y = `r round(coefficients(fit)[2], 6)`X + `r round(coefficients(fit)[1], 3)`$$
-
-
+O $R^2 = `r r`$
 
 # Conclusão
 ```{r,echo=FALSE }
