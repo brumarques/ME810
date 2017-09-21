@@ -30,7 +30,7 @@ plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #
 
 ```
 
-**Medias Resumo**  
+**Medidas Resumo**  
 
 
 |        | Concentração | Área     |
