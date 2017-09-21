@@ -123,6 +123,16 @@ Figura 5: QQ-plot
 Se algum dos três itens acima não ocorrer, a linearidade não é satisfeita, uma vez que as suposições teóricas para ajuste da reta não são satisfeitas. Para o nosso exemplo, a linearidade é satisfeita, uma vez que a reta está bem ajustada e os resíduos satisfazem as suposições do modelo.
 
 
+#Teste de Falta de Ajuste
+
+O Teste Lack of Fit é um teste estatístico para avaliar a falta de ajuste em um modelo de regressão. O teste assume que a normalidade, independência e homocedasticiade da variância dos resíduos sejam válidos. Assim, após o ajuste e análise de resíduos, é importante verificar se o modelo linear é adequado.
+
+```{r,echo=FALSE }
+library(alr3)
+pureErrorAnova(fit)
+```
+
+
 # Conclusão
 
 Através de métodos estatísticos temos condição de validar a linearidade, partindo inicialmente com uma estatística descritiva para dar uma visão geral das concentrações e suas áreas , seguindo de uma regressão linear para nos mostrarmos estatisticamente a linearidade, concluindo com testes para verificação de alguns pontos importantes como independência, normalidade e homocedasticidade.  
