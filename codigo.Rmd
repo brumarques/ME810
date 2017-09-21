@@ -56,12 +56,11 @@ Acima, temos a reta de regressão (curva analítica) traçada em cima dos pontos
 $$Y = `r format(coefficients(fit)[2], scientific=FALSE)`X + `r round(coefficients(fit)[1], 2)`$$
 Ou seja, $a=`r format(coefficients(fit)[2], scientific=FALSE)`$ e $b=`r round(coefficients(fit)[1], 2)`$.   
 
-|           |                                                       |                                     |   |   |
-|:---------:|:-----------------------------------------------------:|:-----------------------------------:|:-:|:-:|
-| Parâmetro | Estimativa                                            | p-valor                             |   |   |
-| a         | `r `r format(coefficients(fit)[2], scientific=FALSE)` | `r summary(fit)$coefficients[2,4]`  |   |   |
-| b         | `r round(coefficients(fit)[1], 2)`                    | `r summary(fit)$coefficients[1,4]`  |   |   |
-  
+| Parâmetro 	| Estimativa                                          	| p-valor                             	|
+|-----------	|-----------------------------------------------------	|-------------------------------------	|
+| a         	| `r  format(coefficients(fit)[2], scientific=FALSE)` 	| `r summary(fit)$coefficients[2,4]`  	|
+| b         	| `r round(coefficients(fit)[1], 2)`                  	| `r summary(fit)$coefficients[1,4]`  	|    
+
 # Conclusão
 ```{r,echo=FALSE }
 
