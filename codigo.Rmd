@@ -42,6 +42,8 @@ Figura 1: Gráfico de dispersão.
 | Média  | `r mean(data$Concentração)`         | `r formatC(mean(data$Área), digits = 7)` |
 
 
+Tabela 1: Medidas resumo dos dados.
+
 # Regressão linear e significância dos parâmetros (curva analítica)  
 
 Estatisticamente, a melhor forma de avaliar a linearidade é através da regressão linear, pois é a metodologia que estuda a relação entre uma variável de interesse (Área) e outras variáveis (Concentração). Com a regressão, vemos qual a melhor reta $(y=ax + b)$ a ser traçada que se ajusta melhor nesses dados, ou seja, qual reta faz com que a distância entre os pontos e a reta ajustada seja a menor possível, minimizando o erro e estimando com maior precisão, por isso a estimação é feita através do Método dos Mínimos Quadrados.  
@@ -54,7 +56,10 @@ r= summary(fit)$r.squared
 
 ```
 
-Acima, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
+Figura 2: Gráfico de dispersão com a reta de regressão ajustada.
+
+
+Na Figura 2, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
 $$Y = `r format(coefficients(fit)[2], scientific=FALSE)`X + `r round(coefficients(fit)[1], 2)`$$
 Ou seja, $a=`r format(coefficients(fit)[2], scientific=FALSE)`$ e $b=`r round(coefficients(fit)[1], 2)`$.   
 
@@ -63,9 +68,12 @@ Ou seja, $a=`r format(coefficients(fit)[2], scientific=FALSE)`$ e $b=`r round(co
 | a         	| `r  format(coefficients(fit)[2], scientific=FALSE)` 	| `r summary(fit)$coefficients[2,4]`  	|
 | b         	| `r round(coefficients(fit)[1], 2)`                  	| `r summary(fit)$coefficients[1,4]`  	|    
 
+Tabela 2: Estimativas e p-valor dos parâmetros da reta ajustada.
+
+
 # Qualidade de Ajuste e homocedasticidade
 
-O passo seguinte após determinarmos a metodologia e ajustarmos o modelo é verificar a qualidade do ajuste do modelo aos dados. Algumas técnicas podem ser utilizadas, entre elas a  “análise de variância da regressão”(ANOVA)  que é uma das mais utilizadas. 
+Após determinarmos a metodologia e ajustarmos o modelo, é necessário verificar a qualidade do ajuste do modelo aos dados. Algumas técnicas podem ser utilizadas, entre elas a  “análise de variância da regressão” (ANOVA),  que é uma das mais utilizadas. 
 
 Tabela ANOVA
 
