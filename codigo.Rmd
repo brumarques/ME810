@@ -53,7 +53,7 @@ r= summary(fit)$r.squared
 ```
 
 Acima, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
-$$Y = `r coefficients(fit)[2]`X + `r coefficients(fit)[1]`$$
+$$Y = `r format(coefficients(fit)[2], scientific=FALSE)`X + `r round(coefficients(fit)[1], 2)`$$
 O $R^2 = `r r`$
 
 # Conclusão
