@@ -69,7 +69,8 @@ Tabela ANOVA
 
 Para avaliar se a reta foi bem ajustada, ou seja, se os coeficientes da reta se ajustam bem aos pontos, vamos observar o p-valor. Ele nos mostra se cada coeficiente é significativo ou não para o modelo.
 Dado que o nível de significância é 0.05, se:
-     P-valor < 0.05, há evidências para de que o parâmetro é significativo, ou seja, ele é diferente de zero, e a linearidade é aceita.      P-valor > 0,05, não há evidências para de que o parâmetro é significativo, ou seja, ele é igual a zero e não significativo para o modelo. Neste caso, a linearidade não é aceita.
+\\     P-valor < 0.05, há evidências para de que o parâmetro é significativo, ou seja, ele é diferente de zero, e a linearidade é aceita.
+\\     P-valor > 0,05, não há evidências para de que o parâmetro é significativo, ou seja, ele é igual a zero e não significativo para o modelo. Neste caso, a linearidade não é aceita.
 
 Para verificarmos a homocedasticidade do modelo, ou seja, se temos variância constante, vamos utilizar o Teste de Cochran, que consiste em comparar a maior variância com as demais.
 
