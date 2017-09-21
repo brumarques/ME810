@@ -16,9 +16,9 @@ O objetivo do nosso projeto é avaliar e revisar a metodologia usada para valida
 
 # Análise descritiva   
 
-A Estatística descritiva fornece resumos simples sobre a amostra e sobre as observações que foram feitas. Tal resumo pode ser quantitativo ou visual.     
+A análise descritiva fornece resumos simples sobre a amostra e sobre as observações. Tal resumo pode ser quantitativo ou visual.     
 Como geralmente os dados são “concentração” e “área”, sabemos que eles são **positivos** e **não nulos** , ou seja, maiores que zero. Sugerimos, então, fazer um gráfico de dispersão e calcular as medidas resumo.    
-Pelo gráfico de dispersão, será possível observar se há valores discrepantes ou se há inconsistência nos dados (erro de digitação, por exemplo).   
+Pelo gráfico de dispersão (Figura 1), será possível observar se há valores discrepantes ou se há inconsistência nos dados (erro de digitação, por exemplo).   
 Pelas medidas resumo verificamos se os valores tem as características esperadas. Tais medidas consistem em valores máximo e mínimo, média e desvio padrão.    
 Lembrando que **não** devemos retirar um valor da amostra, por mais que ele seja muito diferente dos demais, exceto quando há **certeza** de que foi um erro humano.
 
@@ -29,6 +29,8 @@ data <- read_excel("C:/Users/TEMP/Downloads/data.xlsx") #leitura dos dados
 plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #grafico de dispersao
 
 ```
+
+Figura 1: Gráfico de dispersão.
 
 **Medidas Resumo**  
 
