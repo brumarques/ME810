@@ -81,22 +81,22 @@ Dado que o nível de significância é 0.05, se:
 
 # Diagnóstico do Modelo - Análise de Resíduos
 
-Para verificar se a reta de regressão que foi ajustada satisfaz as suposições teóricas da metodologia estatística, devemos avaliar:
+<p align="justify"> $\quad$ Para verificar se a reta de regressão que foi ajustada satisfaz as suposições teóricas da metodologia estatística, devemos avaliar:</p>
 
 1. Independência dos resíduos  
 Se há independência, os pontos devem estar distribuídos de forma aleatória no gráfico de resíduos vs valores ajustados, sem uma tendência de aumento ou diminuição de variabilidade, assim como na Figura 3.
 
-```{r,echo=FALSE }
+```{r,echo=FALSE,fig.align='center'}
 plot(fit$fitted.values,residuals(fit),ylab="Resíduos",xlab="Valores ajustados"); abline(h=0)
 ```
 
-Figura 3: Gráfico de resíduos vs valores ajustados.
+<center>Figura 3: Gráfico de resíduos vs valores ajustados.</center>
 
 2. Homocedasticidade dos resíduos  
-Precisamos verificar se há homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos padronizados vs ordem da coleta dos dados.  
+Precisamos verificar se há homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos padronizados vs a ordem da coleta dos dados.  
 Se os pontos estiverem distribuídos de forma aleatória e dentro dos limites, a homocedasticidade é satisfeita.
 
-```{r,echo=FALSE }
+```{r,echo=FALSE,fig.align='center'}
 respad <-rstandard(fit)
 plot(respad, xlab="Ordem de coleta",ylab="Resíduos Padronizados")
 lines(respad, lty=2)
@@ -106,19 +106,18 @@ abline(h=-2,lty=2,col="blue")
 
 ```
 
-Figura 4: Gráfico de resíduos padronizados vs ordem de coleta.
+<center>Figura 4: Gráfico de resíduos padronizados vs ordem de coleta.</center>
 
 3. Distribuição normal dos resíduos  
-Se os resíduos têm distribuição normal, os pontos do gráfico devem estar próximos da reta, de forma aleatória, ou seja, não pode haver vários pontos seguidos abaixo da reta, por exemplo.
+Se os resíduos têm distribuição normal, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão.
 
-```{r,echo=FALSE }
+```{r,echo=FALSE,fig.align='center'}
 qqnorm(residuals(fit),pch=20);qqline(residuals(fit))
 ```
 
-Figura 5: QQ-plot
+<center>Figura 5: QQ-plot.</center>
 
-Se algum dos três itens acima não ocorrer, a linearidade não é satisfeita, uma vez que as suposições teóricas para ajuste da reta não são satisfeitas. Para o nosso exemplo, a linearidade é satisfeita, uma vez que a reta está bem ajustada e os resíduos satisfazem as suposições do modelo.
-
+<p align="justify"> $\quad$ Se algum dos três itens acima não ocorrer, a linearidade não é satisfeita, uma vez que as suposições teóricas para ajuste da reta não são satisfeitas. Para o nosso exemplo, a linearidade é satisfeita, uma vez que a reta está bem ajustada e os resíduos satisfazem as suposições do modelo de regressão.</p>
 
 #Teste de Falta de Ajuste
 
