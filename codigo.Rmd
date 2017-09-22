@@ -28,7 +28,7 @@ plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #
 
 ```
 
-Figura 1: Gráfico de dispersão.
+<center>Figura 1: Gráfico de dispersão.</center>
 
 **Medidas Resumo**  
 
@@ -40,13 +40,13 @@ Figura 1: Gráfico de dispersão.
 | Média  | `r mean(data$Concentração)`         | `r formatC(mean(data$Área), digits = 7)` |
 
 
-Tabela 1: Medidas resumo dos dados.
+<center>Tabela 1: Medidas resumo dos dados.</center>
 
-# Regressão linear e significância dos parâmetros (curva analítica)  
+# Regressão Linear e Significância dos Parâmetros (Curva Analítica)  
 
-Estatisticamente, a melhor forma de avaliar a linearidade é através da regressão linear, pois é a metodologia que estuda a relação entre uma variável de interesse (Área) e outras variáveis (Concentração). Com a regressão, vemos qual a melhor reta $(y=ax + b)$ a ser traçada que se ajusta melhor nesses dados, ou seja, qual reta faz com que a distância entre os pontos e a reta ajustada seja a menor possível, minimizando o erro e estimando com maior precisão, por isso a estimação é feita através do Método dos Mínimos Quadrados.  
+<p align="justify"> $\quad$ Estatisticamente, a melhor forma de avaliar a linearidade é através da regressão linear, pois é a metodologia que estuda a relação entre uma variável de interesse (Área) e outras variáveis (Concentração). Com a regressão, vemos qual a melhor reta $(y=ax + b)$ a ser traçada que se ajusta melhor nesses dados, ou seja, qual reta faz com que a distância entre os pontos e a reta ajustada seja a menor possível, minimizando o erro e estimando com maior precisão, por isso a estimação é feita através do Método dos Mínimos Quadrados.</p>  
 
-```{r,echo=FALSE }
+```{r,echo=FALSE,fig.align='center'}
 fit = lm(Área~Concentração, data=data)
 plot(Área~Concentração, data=data, main="Curva Analítica")
 abline(fit, col="red")
@@ -54,12 +54,12 @@ r= summary(fit)$r.squared
 
 ```
 
-Figura 2: Gráfico de dispersão com a reta de regressão ajustada.
+<center>Figura 2: Gráfico de dispersão com a reta de regressão ajustada.</center>
 
 
-Na Figura 2, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
+<p align="justify"> $\quad$ Na Figura 2, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
 $$Y = `r format(coefficients(fit)[2], scientific=FALSE)`X + `r round(coefficients(fit)[1], 2)`$$
-Ou seja, $a=`r format(coefficients(fit)[2], scientific=FALSE)`$ e $b=`r round(coefficients(fit)[1], 2)`$.   
+Ou seja, $a=`r format(coefficients(fit)[2], scientific=FALSE)`$ e $b=`r round(coefficients(fit)[1], 2)`$.</p>    
 
 
 # Qualidade de Ajuste Do Modelo
