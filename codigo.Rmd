@@ -61,7 +61,7 @@ r= summary(fit)$r.squared
 <p align="justify"> $\quad$ Na Figura 2, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
 $$Y = `r format(coefficients(fit)[2], scientific=FALSE)`X + `r round(coefficients(fit)[1], 2)`$$
 Ou seja, $a=`r format(coefficients(fit)[2], scientific=FALSE)`$ e $b=`r round(coefficients(fit)[1], 2)`$.</p>    
-O coeficiente de correlação obtido é $R^2 = r r$.
+O coeficiente de correlação obtido é $R^2 = `r r`$.
 
 
 # Qualidade de Ajuste do Modelo
