@@ -9,18 +9,17 @@ output: html_document
 ---
 # Introdução
 
-A Validari é uma *start up* que foi criada com o intuito de auxiliar os laboratórios farmacêuticos na validação de métodos analíticos. A proposta da empresa é criar um *software online*, que seja capaz de validar métodos analíticos de forma ágil e correta estatisticamente.  
-O objetivo do nosso projeto é avaliar e revisar a metodologia usada para validação da Linearidade, explicando de forma clara o passo a passo da metodologia mais adequada.  
-
+$\quad$ A Validari é uma *start up* que foi criada com o intuito de auxiliar os laboratórios farmacêuticos na validação de métodos analíticos. A proposta da empresa é criar um *software online*, que seja capaz de validar métodos analíticos de forma ágil e correta estatisticamente.  
+$\quad$ O objetivo do nosso projeto é avaliar e revisar a metodologia usada para validação da Linearidade, explicando de forma clara o passo a passo da metodologia mais adequada.  
 
 
 # Análise Descritiva   
 
-A análise descritiva fornece resumos simples sobre a amostra e sobre as variáveis observadas. Tal resumo pode ser quantitativo ou visual.     
-No caso de validação de métodos analíticos, geralmente os dados são “concentração” e “área”, sabemos que eles são **positivos** e **não nulos** , ou seja, maiores que zero. Sugerimos então, fazer um gráfico de dispersão e calcular as medidas resumo para começar a entender melhor como os dados se comportam.    
-Pelo gráfico de dispersão (Figura 1), será possível observar se há valores discrepantes ou se há inconsistência nos dados (erro de digitação, por exemplo).   
-Pelas medidas resumo verificamos se os valores tem as características esperadas. Tais medidas consistem em valores máximo e mínimo, média e desvio padrão.    
-Lembrando que **não** devemos retirar um valor da amostra, por mais que ele seja muito diferente dos demais, exceto quando há **certeza** de que foi um erro humano ou falha do equipamento. 
+$\quad$ A análise descritiva fornece resumos simples sobre a amostra e sobre as variáveis observadas. Tal resumo pode ser quantitativo ou visual.     
+$\quad$ Como no caso de validação de métodos analíticos as variáveis são “concentração” e “área”, sabemos que elas são **positivos** e **não nulos** , ou seja, maiores que zero. Sugerimos, então, fazer um gráfico de dispersão e calcular as medidas resumo para começar a entender melhor como os dados se comportam.    
+$\quad$ Pelo gráfico de dispersão (Figura 1), é possível observar como é a relação entre as variáveis, se há valores discrepantes ou se há alguma inconsistência nos dados (erro de digitação, por exemplo).   
+$\quad$ Pelas medidas resumo (Tabela 1) verificamos se os valores tem as características esperadas. Tais medidas consistem em valores máximo e mínimo, média e desvio padrão, para cada uma das variáveis.    
+$\quad$ Se houver suspeita de que algum valor não está correto,  deve-se realizar uma análise mais aprofundada sobre ele para confirmar, lembrando que **não** devemos retirar um valor da amostra, por mais que ele seja muito diferente dos demais, exceto quando há **certeza** de que foi um erro humano ou falha do equipamento. 
 
 ```{r, echo=FALSE, warning=FALSE}
 library(readxl) #biblioteca para ler o excel
