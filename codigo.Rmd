@@ -16,7 +16,7 @@ $\quad$ O objetivo do nosso projeto é avaliar e revisar a metodologia usada par
 # Análise Descritiva   
 
 <p align="justify"> $\quad$ A análise descritiva fornece resumos simples sobre a amostra e sobre as variáveis observadas. Tal resumo pode ser quantitativo ou visual.     
-$\quad$ Como no caso de validação de métodos analíticos as variáveis são “concentração” e “área”, sabemos que elas são **positivAs** e **não nulAs**, ou seja, maiores que zero. Sugerimos então, fazer um gráfico de dispersão e calcular as medidas resumo para começar a entender melhor como os dados se comportam.    
+$\quad$ Como no caso de validação de métodos analíticos as variáveis são “concentração” e “área”, sabemos que elas são **positivas** e **não nulas**, ou seja, maiores que zero. Sugerimos então, fazer um gráfico de dispersão e calcular as medidas resumo para começar a entender melhor como os dados se comportam.    
 $\quad$ Pelo gráfico de dispersão (Figura 1), é possível observar como é a relação entre as duas variáveis, se há valores discrepantes ou se há alguma inconsistência nos dados (erro de digitação, por exemplo). Pelas medidas resumo (Tabela 1) verificamos se os valores tem as características esperadas. Tais medidas consistem em valores máximo e mínimo, média e desvio padrão, para cada uma das variáveis.    
 $\quad$ Se houver suspeita de que algum valor não está correto,  deve-se realizar uma análise mais aprofundada sobre ele para confirmar, lembrando que **não** devemos retirar um valor da amostra, por mais que ele seja muito diferente dos demais, exceto quando há **certeza** de que foi um erro humano ou falha do equipamento. </p>
 
