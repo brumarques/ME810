@@ -129,7 +129,7 @@ qqnorm(residuals(fit),pch=20);qqline(residuals(fit))
 library(alr3)
 pureErrorAnova(fit)
 ```
-Como podemos ver, os p-valores encontrados são próximos de zero, ou seja, as condiçoes de normalidade, independência e homocedasticiade da variância dos resíduos são satisfeitas.  
+Como podemos ver, o p-valor encontrado $0.7676$ é maior que o nível de significância $0.05$, ou seja, as condiçoes de normalidade, independência e homocedasticiade da variância dos resíduos são satisfeitas.  
 
 # Conclusão
 
