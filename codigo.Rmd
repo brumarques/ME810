@@ -129,6 +129,7 @@ qqnorm(residuals(fit),pch=20);qqline(residuals(fit))
 library(alr3)
 pureErrorAnova(fit)
 ```
+Como podemos ver, os p-valores encontrados são próximos de zero, ou seja, as confiçoes de normalidade, independência e homocedasticiade da variância dos resíduos são satisfeitas.  
 
 # Conclusão
 
