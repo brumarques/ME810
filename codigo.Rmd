@@ -85,7 +85,7 @@ Dado que o nível de significância é 0.05, se:
 
 <p align="justify"> $\quad$ Para verificar se a reta de regressão que foi ajustada satisfaz as suposições teóricas da metodologia estatística, devemos avaliar:</p>
 
-1. Independência dos resíduos  
+## 1. Independência dos resíduos  
 Se há independência, os pontos devem estar distribuídos de forma aleatória no gráfico de resíduos vs valores ajustados, sem uma tendência de aumento ou diminuição de variabilidade, assim como na Figura 3.
 
 ```{r,echo=FALSE,fig.align='center'}
@@ -94,7 +94,7 @@ plot(fit$fitted.values,residuals(fit),ylab="Resíduos",xlab="Valores ajustados")
 
 <center>Figura 3: Gráfico de resíduos vs valores ajustados.</center>
 
-2. Homocedasticidade dos resíduos  
+## 2. Homocedasticidade dos resíduos  
 Precisamos verificar se há homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos padronizados vs a ordem da coleta dos dados.  
 Se os pontos estiverem distribuídos de forma aleatória e dentro dos limites, a homocedasticidade é satisfeita.
 
@@ -110,7 +110,7 @@ abline(h=-2,lty=2,col="blue")
 
 <center>Figura 4: Gráfico de resíduos padronizados vs ordem de coleta.</center>
 
-3. Distribuição normal dos resíduos  
+## 3. Distribuição normal dos resíduos  
 Se os resíduos têm distribuição normal, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão.
 
 ```{r,echo=FALSE,fig.align='center'}
@@ -121,7 +121,7 @@ qqnorm(residuals(fit),pch=20);qqline(residuals(fit))
 
 <p align="justify"> $\quad$ Se algum dos três itens acima não ocorrer, a linearidade não é satisfeita, uma vez que as suposições teóricas para ajuste da reta não são satisfeitas. Para o nosso exemplo, a linearidade é satisfeita, uma vez que a reta está bem ajustada e os resíduos satisfazem as suposições do modelo de regressão.</p>
 
-#Teste de Falta de Ajuste
+## Teste de Falta de Ajuste
 
 <p align="justify"> $\quad$ O Teste Lack of Fit é um teste estatístico para avaliar a falta de ajuste em um modelo de regressão. O teste assume que a normalidade, independência e homocedasticiade da variância dos resíduos sejam válidos. Assim, após o ajuste e análise de resíduos, é importante verificar se o modelo linear é adequado.</p>
 
