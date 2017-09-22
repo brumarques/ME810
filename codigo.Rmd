@@ -28,7 +28,8 @@ plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #
 
 ```
 
-<center>Figura 1: Gráfico de dispersão.</center>
+<center>Figura 1: Gráfico de dispersão.</center>  
+
 
 **Medidas Resumo**  
 
@@ -54,7 +55,7 @@ r= summary(fit)$r.squared
 
 ```
 
-<center>Figura 2: Gráfico de dispersão com a reta de regressão ajustada.</center>
+<center>Figura 2: Gráfico de dispersão com a reta de regressão ajustada.</center>  
 
 
 <p align="justify"> $\quad$ Na Figura 2, temos a reta de regressão (curva analítica) traçada em cima dos pontos. A reta encontrada foi:   
