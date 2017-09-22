@@ -62,23 +62,22 @@ $$Y = `r format(coefficients(fit)[2], scientific=FALSE)`X + `r round(coefficient
 Ou seja, $a=`r format(coefficients(fit)[2], scientific=FALSE)`$ e $b=`r round(coefficients(fit)[1], 2)`$.</p>    
 
 
-# Qualidade de Ajuste Do Modelo
+# Qualidade de Ajuste do Modelo
 
-Após determinarmos a metodologia e ajustarmos o modelo, é necessário verificar a qualidade do ajuste do modelo aos dados. Algumas técnicas podem ser utilizadas, entre elas a  “análise de variância da regressão” (ANOVA), que é uma das mais utilizadas. 
-Considerando o nosso exemplo, o resultado da ANOVA é mostrado na tabela 2:
+<p align="justify"> $\quad$ Após determinarmos a metodologia e ajustarmos o modelo, é necessário verificar a qualidade do ajuste do modelo aos dados. Algumas técnicas podem ser utilizadas, dentre elas a  “análise de variância da regressão” (ANOVA), que é uma das mais utilizadas. 
+Considerando o nosso exemplo, o resultado da ANOVA é mostrado na Tabela 2: </p> 
 
 | Parâmetro 	| Estimativa                                          	| p-valor                             	|
 |-----------	|-----------------------------------------------------	|-------------------------------------	|
 | a         	| `r  format(coefficients(fit)[2], scientific=FALSE)` 	| `r summary(fit)$coefficients[2,4]`  	|
 | b         	| `r round(coefficients(fit)[1], 2)`                  	| `r summary(fit)$coefficients[1,4]`  	|    
 
-Tabela 2: Tabela ANOVA- Estimativas e p-valor dos parâmetros da reta ajustada.
+<center>Tabela 2: Tabela ANOVA- Estimativas e p-valor dos parâmetros da reta ajustada.</center>
 
-Para avaliar se a reta foi bem ajustada, ou seja, se os coeficientes da reta se ajustam bem aos pontos, vamos observar o p-valor. Ele nos mostra se cada coeficiente é significativo ou não para o modelo.
+<p align="justify"> $\quad$ Para avaliar se a reta está bem ajustada, ou seja, se os coeficientes da reta se ajustam bem aos pontos, vamos observar o p-valor. Ele nos mostra se cada coeficiente é significativo ou não para o modelo.
 Dado que o nível de significância é 0.05, se:   
-   <p> * P-valor < 0.05, há evidências para de que o parâmetro é significativo, ou seja, ele é diferente de zero, e a linearidade é aceita. <br />    
-       * P-valor > 0,05, não há evidências para de que o parâmetro é significativo, ou seja, ele é igual a zero e não significativo para o modelo. Neste caso, a linearidade não é aceita. </p>  
-
+   <p> * P-valor < 0.05, há evidências de que o parâmetro é significativo, ou seja, ele é diferente de zero, e a linearidade é satisfeita. <br />    
+   <p> * P-valor > 0,05, não há evidências de que o parâmetro é significativo, ou seja, ele é igual a zero e não significativo para o modelo. Neste caso, a linearidade não é satisfeita. </p> 
 
 # Diagnóstico do Modelo - Análise de Resíduos
 
