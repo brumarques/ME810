@@ -2,11 +2,13 @@
 title: "Validari - Linearidade"
 author: "Estatística 2017"
 date: "11 de setembro de 2017"
-header-includes:
-   - \usepackage{bbm}
-output: html_document
-
+output:
+  html_document: default
+  pdf_document: default
+header-includes: \usepackage{bbm}
 ---
+
+
 # Introdução
 
 <p align="justify"> $\quad$ A Validari é uma *start up* que foi criada com o intuito de auxiliar os laboratórios farmacêuticos na validação de métodos analíticos. A proposta da empresa é criar um *software online*, que seja capaz de validar métodos analíticos de forma ágil e correta estatisticamente.  
@@ -23,7 +25,7 @@ $\quad$ Se houver suspeita de que algum valor não está correto,  deve-se reali
 ```{r, echo=FALSE, warning=FALSE,fig.align='center'}
 library(readxl) #biblioteca para ler o excel
 library(knitr)
-data <- read_excel("C:/Users/TEMP/Downloads/data.xlsx") #leitura dos dados
+data <- read_excel("data.xlsx") #leitura dos dados
 plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #grafico de dispersao
 
 ```
@@ -47,7 +49,7 @@ plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #
 
 <p align="justify"> $\quad$ Estatisticamente, a melhor forma de avaliar a linearidade é através da regressão linear, pois é a metodologia que estuda a relação entre uma variável de interesse (Área) e outras variáveis (Concentração). Com a regressão, vemos qual a melhor reta $(y=ax + b)$ a ser traçada que se ajusta melhor nesses dados, ou seja, qual reta faz com que a distância entre os pontos e a reta ajustada seja a menor possível, minimizando o erro e estimando com maior precisão, por isso a estimação é feita através do Método dos Mínimos Quadrados.</p>  
 
-```{r,echo=FALSE,fig.align='center'}
+```{r,echo=FALSE,fig.align='center', warning=FALSE}
 fit = lm(Área~Concentração, data=data)
 plot(Área~Concentração, data=data, main="Curva Analítica")
 abline(fit, col="red")
@@ -83,10 +85,34 @@ Dado que o nível de significância é 0.05, se:
 
 # Diagnóstico do Modelo - Análise de Resíduos
 
-<p align="justify"> $\quad$ Para verificar se a reta de regressão que foi ajustada satisfaz as suposições teóricas da metodologia estatística, devemos avaliar:</p>
+<p align="justify"> $\quad$ Para verificar se a reta de regressão que foi ajustada satisfaz as suposições teóricas da metodologia estatística, devemos avaliar três suposições a partir dos resíduos e são elas: Independência, Homocedasticidade e Normalidade.
+</p>
+ Para verificar se as três suposições são validas, podemos fazer gráficos e também alguns testes estatísticos específicos para cada uma delas. 
+ 
+  A independência pode ser confirmada, se no gráfico de resíduos vs valores ajustados, os pontos estiverem distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade, assim como na Figura 3. Ou, de acordo com o teste Durbin-Watson, que é utilizado para detectar a presença de autocorrelação (dependência), temos que os resíduos são independentes se, dada as hipóteses:
+  
+  ##HIPOTESES
+  
+  
+  e com o p-valor obtido, não rejeitamos $H0$ se for maior que o nível de significância, assim a correlação é zero, ou seja há independência.
+  
+  Os resultados referentes ao teste Durbin-Watson estão sendo mostrados na Tabela 3, e nela vemos que os resíduos são independentes. 
 
-## 1. Independência dos resíduos  
-Se há independência, os pontos devem estar distribuídos de forma aleatória no gráfico de resíduos vs valores ajustados, sem uma tendência de aumento ou diminuição de variabilidade, assim como na Figura 3.
+<center>Tabela 3: Resultados do Teste de Durbin-Watson - Independência</center>
+
+| Teste de Independência - Durbin-Watson |         |
+|:--------------------------------------:|:-------:|
+|              Estatística               | P-valor |
+|                 1.9369                 |    0.3554|
+
+
+```{r, echo=FALSE, warning=FALSE, results=FALSE}
+#Teste de Durbin-Watson - Independencia
+#library(lmtest)
+#dwtest(fit)
+
+```
+
 
 ```{r,echo=FALSE,fig.align='center'}
 plot(fit$fitted.values,residuals(fit),ylab="Resíduos",xlab="Valores ajustados"); abline(h=0)
@@ -94,9 +120,24 @@ plot(fit$fitted.values,residuals(fit),ylab="Resíduos",xlab="Valores ajustados")
 
 <center>Figura 3: Gráfico de resíduos vs valores ajustados.</center>
 
-## 2. Homocedasticidade dos resíduos  
-Precisamos verificar se há homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos padronizados vs a ordem da coleta dos dados.  
-Se os pontos estiverem distribuídos de forma aleatória e dentro dos limites, a homocedasticidade é satisfeita.
+
+  A segunda suposição a ser verificada é a homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos padronizados vs a ordem da coleta dos dados.  
+Se os pontos estiverem distribuídos de forma aleatória e dentro dos limites, a homocedasticidade é satisfeita. E o teste para ser feito deve ser o Teste de Cochran, que compara a maior variância com as demais. As hipóteses são dadas por:
+
+#HIPOTESES
+
+ e do mesmo modo como teste anterior, os resíduos são homecedásticos se p-valor for maior que o nível de significância. 
+ 
+ O resultado do teste de Cochran é o seguinte:
+
+<center>Tabela 4: Resultados do Teste de Cochran - Homocedasticidade</center>
+
+| Teste de Homecedasticidade - Cochran |         |
+|-------------------------------------:|--------:|
+|             Estatística              | P-valor |
+|                0.36671               |    0.409|
+
+Assim, não detectamos diferença significativa entre as variâncias entre os níveis de concentração do modelo (p-valor de 0,409) , ou seja, o modelo é homocedástico ao nível de significância de 5%.
 
 ```{r,echo=FALSE,fig.align='center'}
 respad <-rstandard(fit)
@@ -110,8 +151,29 @@ abline(h=-2,lty=2,col="blue")
 
 <center>Figura 4: Gráfico de resíduos padronizados vs ordem de coleta.</center>
 
-## 3. Distribuição normal dos resíduos  
-Se os resíduos têm distribuição normal, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão.
+```{r, echo=FALSE, warning=FALSE}
+#Teste de Cochran - Homocedasticidade
+#library(outliers)
+#cochran.test(Área~Concentração, data)
+```
+ 
+ 
+ Por fim, vamos verificar a normalidade dos resíduos, ou seja verificar se a distribuição de probabilidade associada a um conjunto de dados pode ser aproximada pela distribuição normal.
+Se os resíduos são normais, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão, como é mostrado na Figura 5. E o teste que fazemos é o Shapiro-Wilk, um dos mais conhecidos, onde as hipóteses são: 
+
+##Hipóteses
+
+  Para nosso exemplo, segue o seguinte resultado:
+  
+<center> Tabela 5: Resultados do Teste de Shapiro Wilk - Normalidade </center>
+
+| Teste de Normalidade - Shapiro Wilk |         |
+|------------------------------------:|--------:|
+|             Estatística             | P-valor |
+|               0.97721|   0.7476|
+
+E assim chegamos em conclusões similares aos outros testes: como p-valor é maior que o nível de significância(p-valor de 0.74),  temos normalidade dos resíduos. 
+
 
 ```{r,echo=FALSE,fig.align='center'}
 qqnorm(residuals(fit),pch=20);qqline(residuals(fit))
@@ -119,19 +181,36 @@ qqnorm(residuals(fit),pch=20);qqline(residuals(fit))
 
 <center>Figura 5: QQ-plot.</center>
 
-<p align="justify"> $\quad$ Se algum dos três itens acima não ocorrer, a linearidade não é satisfeita, uma vez que as suposições teóricas para ajuste da reta não são satisfeitas. Para o nosso exemplo, a linearidade é satisfeita, uma vez que a reta está bem ajustada e os resíduos satisfazem as suposições do modelo de regressão.</p>
 
-## Teste de Falta de Ajuste
-
-<p align="justify"> $\quad$ O Teste Lack of Fit é um teste estatístico para avaliar a falta de ajuste em um modelo de regressão. O teste assume que a normalidade, independência e homocedasticiade da variância dos resíduos sejam válidos. Assim, após o ajuste e análise de resíduos, é importante verificar se o modelo linear é adequado.</p>
-
-```{r,echo=FALSE }
-library(alr3)
-pureErrorAnova(fit)
+```{r, echo=FALSE, warning=FALSE}
+#Teste de Shapiro Wilk - Normalidade
+#shapiro.test(fit$residuals)
 ```
+
+<p align="justify"> $\quad$ Se algum dos três itens acima não ocorrer, a linearidade não é satisfeita, uma vez que as suposições teóricas para ajuste da reta não são satisfeitas. Para o nosso exemplo, a linearidade é satisfeita, uma vez que a reta está bem ajustada e os resíduos satisfazem as suposições do modelo de regressão, e também oara todos os testes p-valor foi maior que o nível de significância estabelecido(0.05).</p>
+
+<p align="justify"> $\quad$ Um outra opcão para avaliar o modelo de regressão, é o Teste Lack of Fit, que verifica a falta de ajuste. Ele assume que a normalidade, independência e homocedasticiade da variância dos resíduos sejam válidos. Assim, após o ajuste e análise de resíduos, é importante verificar se o modelo linear é adequado.</p>
+
+```{r,echo=FALSE, warning=FALSE }
+library(alr3)
+#pureErrorAnova(fit)
+```
+
+
+|                  | Teste de Falta de Ajuste |         |
+|:----------------:|:------------------------:|:-------:|
+|                  |       Estatística        | P-valor |
+|   Concentração   |              07.3965e+08 | <0.0001 |
+| Falta de ajuste  |               3.8090e-01 |  0.7676 |
+
+
+
 Como podemos ver, o p-valor encontrado $0.7676$ é maior que o nível de significância $0.05$, ou seja, as condiçoes de normalidade, independência e homocedasticiade da variância dos resíduos são satisfeitas.  
 
 # Conclusão
 
 <p align="justify"> $\quad$ Através de métodos estatísticos temos condição de validar a linearidade. Partindo inicialmente com uma estatística descritiva, para dar uma visão geral dos dados e possíveis pontos aberrantes (*outliers*) ou erro da amostra. Seguindo com uma análise de regressão linear com o objetivo de traçarmos uma reta que matematicamente interpreta os pontos amostrados, essa reta denomidada de curva analítca possui um coeficiente linear que também foi calculado conforme é pedido pelas normas de validação da linearidade pelo nosso país. Por fim, é feita uma análise para verificar a qualidade desta curva e se ela de fato pode ser ulizada para representar a amostr o que incluí os testes para verificação de independência, normalidade e homocedasticidade.   
 A parte de análise de gráficos, é de certa forma subjetiva, pois cada amostra deverá ser analisada por um avaliar experinte e ele quem deverá fazer as devidas concluisões. Já para as análises que possuem p-valor, após um nível de significancia definido, o resultado será obtido diretamente.  </p> 
+
+
+
