@@ -234,7 +234,7 @@ library(alr3)
 
 
 |                  | Teste de Falta de Ajuste |         |
-|:----------------:|:------------------------:|:-------:|
+|---:|---:|---:|
 |                  |       Estatística        | P-valor |
 |   Concentração   |              07.3965e+08 | <0.0001 |
 | Falta de ajuste  |               3.8090e-01 |  0.7676 |
