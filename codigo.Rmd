@@ -185,7 +185,7 @@ $H_0:$ A amostra vem de uma distribuição Normal vs $H_1:$ A amostra não vem d
   Para nosso exemplo, segue o seguinte resultado:
   
 
-|       Teste de Normalidade - Shapiro Wilk     |
+|       Teste de Normalidade - Shapiro Wilk |    |
 |---:|---:|
 |             Estatística             | P-valor |
 |                              0.97721|   0.7476|
