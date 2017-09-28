@@ -91,19 +91,19 @@ Dado que o nível de significância é 0.05, se:
  
   A independência pode ser confirmada, se no gráfico de resíduos vs valores ajustados, os pontos estiverem distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade, assim como na Figura 3. Ou, de acordo com o teste Durbin-Watson, que é utilizado para detectar a presença de autocorrelação (dependência), temos que os resíduos são independentes se, dada as hipóteses:
   
-  ##HIPOTESES
+ $H_0: \rho  = 0$ vs $H_1: \rho  \neq  0$
   
   
-  e com o p-valor obtido, não rejeitamos $H0$ se for maior que o nível de significância, assim a correlação é zero, ou seja há independência.
+  e com o p-valor obtido, não rejeitamos $H_0$ se for maior que o nível de significância, assim a correlação é zero, ou seja há independência.
   
   Os resultados referentes ao teste Durbin-Watson estão sendo mostrados na Tabela 3, e nela vemos que os resíduos são independentes. 
 
 <center>Tabela 3: Resultados do Teste de Durbin-Watson - Independência</center>
 
-| Teste de Independência - Durbin-Watson |         |
+|      Teste de Independência - Durbin-Watson      |
 |:--------------------------------------:|:-------:|
 |              Estatística               | P-valor |
-|                 1.9369                 |    0.3554|
+|                       1.9369           |   0.3554|
 
 
 ```{r, echo=FALSE, warning=FALSE, results=FALSE}
@@ -124,7 +124,9 @@ plot(fit$fitted.values,residuals(fit),ylab="Resíduos",xlab="Valores ajustados")
   A segunda suposição a ser verificada é a homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos padronizados vs a ordem da coleta dos dados.  
 Se os pontos estiverem distribuídos de forma aleatória e dentro dos limites, a homocedasticidade é satisfeita. E o teste para ser feito deve ser o Teste de Cochran, que compara a maior variância com as demais. As hipóteses são dadas por:
 
-#HIPOTESES
+
+$H_0: \sigma^2 _1=\sigma^2_2=...=\sigma^2_k$ vs $H_1:$ pelo menos um $\sigma^2_i$ é diferente, $i=1,...k$
+
 
  e do mesmo modo como teste anterior, os resíduos são homecedásticos se p-valor for maior que o nível de significância. 
  
@@ -132,10 +134,10 @@ Se os pontos estiverem distribuídos de forma aleatória e dentro dos limites, a
 
 <center>Tabela 4: Resultados do Teste de Cochran - Homocedasticidade</center>
 
-| Teste de Homecedasticidade - Cochran |         |
+|      Teste de Homecedasticidade - Cochran      |
 |-------------------------------------:|--------:|
 |             Estatística              | P-valor |
-|                0.36671               |    0.409|
+|                               0.36671|    0.409|
 
 Assim, não detectamos diferença significativa entre as variâncias entre os níveis de concentração do modelo (p-valor de 0,409) , ou seja, o modelo é homocedástico ao nível de significância de 5%.
 
@@ -161,16 +163,17 @@ abline(h=-2,lty=2,col="blue")
  Por fim, vamos verificar a normalidade dos resíduos, ou seja verificar se a distribuição de probabilidade associada a um conjunto de dados pode ser aproximada pela distribuição normal.
 Se os resíduos são normais, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão, como é mostrado na Figura 5. E o teste que fazemos é o Shapiro-Wilk, um dos mais conhecidos, onde as hipóteses são: 
 
-##Hipóteses
+$H_0:$ A amostra vem de uma distribuição Normal vs $H_1:$ A amostra não vem de uma distribuição Normal
+
 
   Para nosso exemplo, segue o seguinte resultado:
   
 <center> Tabela 5: Resultados do Teste de Shapiro Wilk - Normalidade </center>
 
-| Teste de Normalidade - Shapiro Wilk |         |
+|       Teste de Normalidade - Shapiro Wilk     |
 |------------------------------------:|--------:|
 |             Estatística             | P-valor |
-|               0.97721|   0.7476|
+|                              0.97721|   0.7476|
 
 E assim chegamos em conclusões similares aos outros testes: como p-valor é maior que o nível de significância(p-valor de 0.74),  temos normalidade dos resíduos. 
 
