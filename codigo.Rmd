@@ -100,8 +100,8 @@ Não rejeitamos $H_0$ se o p-valor obtido for maior que o nível de significânc
   Os resultados referentes ao teste Durbin-Watson são mostrados na Tabela 3. 
 
 
-|      Teste de Independência - Durbin-Watson      |
-|:--------------------------------------:|:-------:|
+|      Teste de Independência - Durbin-Watson |     |
+|---:|---:|
 |              Estatística               | P-valor |
 |                       1.9369           |   0.3554|
 
@@ -140,8 +140,8 @@ $H_0: \sigma^2 _1=\sigma^2_2=...=\sigma^2_k$ vs $H_1:$ pelo menos um $\sigma^2_i
  O resultado do teste de Cochran é o seguinte:  
 
 
-|      Teste de Homecedasticidade - Cochran      |
-|-------------------------------------:|--------:|
+|      Teste de Homecedasticidade - Cochran |     |
+|---:|---:|
 |             Estatística              | P-valor |
 |                               0.36671|    0.409|
 
