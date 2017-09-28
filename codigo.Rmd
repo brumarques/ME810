@@ -38,7 +38,7 @@ ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Gr�
 
 
 |        | Concentração | Área     |
-|--------|--------------|----------|
+|--------|---:|---:|
 | Mínimo | `r min(data$Concentração)` | `r formatC(min(data$Área), digits = 6)`  |
 | Máximo | `r max(data$Concentração)` | `r formatC(max(data$Área), digits = 7)`  |
 | Média  | `r mean(data$Concentração)`| `r formatC(mean(data$Área), digits = 7)` |
@@ -74,7 +74,7 @@ O coeficiente de correlação obtido é $R^2 = `r r`$.
 Considerando o nosso exemplo, o resultado da ANOVA é mostrado na Tabela 2: </p> 
 
 | Parâmetro 	| Estimativa                                          	| p-valor                             	|
-|-----------	|-----------------------------------------------------	|-------------------------------------	|
+|-----------	|---:	|---:	|
 | a         	| `r  format(coefficients(fit)[2], scientific=FALSE)` 	| `r round(summary(fit)$coefficients[2,4],1)`  	|
 | b         	| `r round(coefficients(fit)[1], 2)`                  	| `r round(summary(fit)$coefficients[1,4],1)`  	|    
 
