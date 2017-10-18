@@ -27,7 +27,7 @@ library(knitr)
 library(ggplot2)
 data <- read_excel("C:/Users/Bruna Marques/Desktop/ME810-master/data.xlsx") #leitura dos dados
 #plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #grafico de dispersao
-ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Gráfico de Dispersão",x="Concentração", y = "Área")
+ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Associação entre Área e Concentração",x="Concentração", y = "Área") + theme_bw()
 
 ```
 
@@ -55,7 +55,7 @@ fit = lm(Área ~ Concentração, data=data)
 #plot(Área~Concentração, data=data, main="Curva Analítica")
 #abline(fit, col="red")
 r= summary(fit)$r.squared
-ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Curva Analítica",x="Concentração", y = "Área") +   geom_smooth(method=lm, se=FALSE,size=1)
+ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Associação entre Concentração e Área, com a reta ajustada",x="Concentração", y = "Área") +   geom_smooth(method=lm, se=FALSE,size=1)+ theme_bw()
 
 ```
 
@@ -121,7 +121,7 @@ Considerando a análise gráfica e o Teste de Durbin-Watson, há evidência de q
 #plot(fit$fitted.values,residuals(fit),ylab="Resíduos",xlab="Valores ajustados"); abline(h=0)
 
 ggplot(fit, aes(x=fit$fitted.values, y=fit$residuals)) + geom_point(size=2) + labs(x="Valores ajustados", y = "Resíduos") +
-geom_hline(yintercept = 0, color="red")
+geom_hline(yintercept = 0, color="red")+ theme_bw()
 
 ```
 
@@ -164,7 +164,7 @@ ggplot(fit, aes( x=x1,y=respad)) +
   labs(x="Ordem de coleta", y = "Resíduos Padronizados") +
   geom_hline(yintercept = 0, color="red") + 
   geom_hline(yintercept = 2, color="red",linetype="dashed") + 
-  geom_hline(yintercept = -2, color="red",linetype="dashed")
+  geom_hline(yintercept = -2, color="red",linetype="dashed")+ theme_bw()
 
 ```
 
@@ -208,7 +208,7 @@ qqplot.data <- function (vec) # argument: vector of numbers
 
   d <- data.frame(resids = vec)
 
-  ggplot(d, aes(sample = resids)) + stat_qq() + geom_abline(slope = slope, intercept = int)
+  ggplot(d, aes(sample = resids)) + stat_qq() + geom_abline(slope = slope, intercept = int)+ theme_bw()
 
 }
 qqplot.data(residuals(fit))
