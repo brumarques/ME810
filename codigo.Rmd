@@ -170,7 +170,10 @@ qqplot.data(residuals(fit))
 
 ```
 
-<p align="justify"> Figura 5: (QQ-plot) Gráfico de probabilidade para os resíduos do modelo linear simples ajustado.</p>\n  
+<p align="justify"> Figura 5: O gráfico Quantil-Quantil dos resíduos é um método gráfico para comparar duas distribuições de probabilidade, traçando seus quantis uns contra os outros. Primeiro, o conjunto de intervalos para os quantis é escolhido, neste caso os quantis de uma distrbuição Normal. Um ponto (x, y) no gráfico corresponde a um dos quantis da segunda distribuição (coordenada y) plotadas contra o mesmo mesmo quantil da primeira distribuição de (coordenada x). Portanto, a linha é uma curva paramétrica com o parâmetro que é o (número do) intervalo para quantil.</p>\n  
+
+<p align="justify"> O gráfico quantil-quantil (q-q) é uma ferramenta muito útil para checar adequação de distribuição de frequência dos resíduos à distribuição Normal. O gráfico q-q é melhor que o histograma e o gráfico de distribuição acumulada empírica porque nós temos mais habilidade para verificar se uma reta se ajusta aos pontos do que se uma curva de densidade se ajusta a um histograma ou uma curva de probabilidade acumulada se ajusta à acumulada empírica. </p>\n  
+
 
 
 ```{r, echo=FALSE, warning=FALSE}
