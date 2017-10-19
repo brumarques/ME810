@@ -55,7 +55,7 @@ fit = lm(Área ~ Concentração, data=data)
 #plot(Área~Concentração, data=data, main="Curva Analítica")
 #abline(fit, col="red")
 r= summary(fit)$r.squared
-ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Associação entre Concentração e Área, com a reta ajustada",x="Concentração", y = "Área") +   geom_smooth(method=lm, se=FALSE,size=1)+ theme_bw()
+ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Associação Concentração x Área com reta ajustada",x="Concentração", y = "Área") +   geom_smooth(method=lm, se=FALSE,size=1)+ theme_bw()
 
 ```
 
