@@ -133,7 +133,7 @@ ggplot(fit, aes(x=fit$fitted.values, y=fit$residuals)) + geom_point(size=2) + la
 geom_hline(yintercept = 0, color="red")+ theme_bw()
 
 ```
-<p align="justify"> Figura 4: Gráfico de resíduos *vs* valores ajustados.</p>\n  
+<p align="justify"> Figura 4: Gráfico de resíduos *vs* valores ajustados. Uma vez que os pontos estão distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade dos resíduos quando comparamos os valores ajustados, há evidência de que a variância desses resíduos seja constante.</p>\n  
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 #Teste de Cochran - Homocedasticidade
