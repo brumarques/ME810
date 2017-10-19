@@ -86,7 +86,7 @@ ou seja, $a= 33675,67$ e $b= 515,12$ O coeficiente de correlação obtido é $R^
 <p align="justify"> $\quad$ O ajuste de uma reta de regressão é feito baseado em suposições teóricas. Para verificar se a reta de regressão ajustada satisfaz as suposições teóricas da metodologia estatística, devemos avaliar três suposições relacionadas ao resíduo. São elas: Independência, Homocedasticidade e Normalidade. Podemos fazer análises gráficas e também testes estatísticos específicos para cada uma delas, para assim constatar se as três suposições são válidas.  
 $\quad$ A independência pode ser confirmada, se no gráfico de resíduos *versus* ordem da coleta, os pontos estiverem distribuídos de forma aleatória em torno de zero e dentro dos limites, assim como na Figura 3. Podemos fazer também o teste Durbin-Watson, que é utilizado para detectar a presença de autocorrelação (dependência), representada por $\rho$ . Temos que os resíduos são independentes se, dada as hipóteses: </p> 
   
- $H_0: \rho  = 0$   vs   $H_1: \rho  \neq  0$
+ $H_0: \rho  = 0$   versus   $H_1: \rho  \neq  0$
   
   
 <p align="justify"> não rejeitamos $H_0$ se o p-valor obtido for maior que o nível de significância, isso significa que não rejeitamos a hipótese de que a correlação é zero, ou seja, há evidências de independência. O p-valor encontrado foi de 0,3554, ou seja, temos evidências de que os resíduos são independentes, com nível de significância de 0,05. Já pelo gráfico da Figura 3, podemos observar que os pontos estão dispersos aleatoriamente, o que é mais uma evidência de que os resíduos são independentes. </p> 
@@ -116,12 +116,12 @@ ggplot(fit, aes( x=x1,y=respad)) +
 
 ```
 
-<p align="justify">Figura 3: Gráfico de resíduos padronizados *vs* ordem de coleta. Os valores dos resíduos são apresentados seguindo a ordem da coleta dos dados, então se os pontos estiverem distribuídos de forma aleatória em torno de zero e dentro dos limites, é uma evidência de independência dos resíduos, como foi observado para esse gráfico.</p>\n  
+<p align="justify">Figura 3: Gráfico de resíduos padronizados versus ordem de coleta. Os valores dos resíduos são apresentados seguindo a ordem da coleta dos dados, então se os pontos estiverem distribuídos de forma aleatória em torno de zero e dentro dos limites, é uma evidência de independência dos resíduos, como foi observado para esse gráfico.</p>\n  
 
-<p align="justify"> $\quad$ A segunda suposição a ser verificada é a homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos *versus* valores ajustados. Se os pontos estiverem distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade, a homocedasticidade é satisfeita (Figura 4). Para complementar a análise, um teste estatístico que pode ser feito é o Teste de Cochran, que compara a maior variância com as demais. As hipóteses são dadas por: </p>
+<p align="justify"> $\quad$ A segunda suposição a ser verificada é a homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos versus valores ajustados. Se os pontos estiverem distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade, a homocedasticidade é satisfeita (Figura 4). Para complementar a análise, um teste estatístico que pode ser feito é o Teste de *Cochran*, que compara a maior variância com as demais. As hipóteses são dadas por: </p>
 
 
-$H_0: \sigma^2 _1=\sigma^2_2=...=\sigma^2_k$   vs   $H_1:$ pelo menos um $\sigma^2_i$ é diferente, $i=1,...k$
+$H_0: \sigma^2 _1=\sigma^2_2=...=\sigma^2_k$   versus   $H_1:$ pelo menos um $\sigma^2_i$ é diferente, $i=1,...k$
 
 
 e do mesmo modo como teste anterior, os resíduos são homocedásticos se p-valor for maior que o nível de significância. O p-valor encontrado foi de 0,409, então há evidência estatística de que os resíduos do modelo são homocedásticos, a nível de 5% de significância. Ou seja, não detectamos diferença significativa entre as variâncias dos resíduos do modelo.
@@ -133,7 +133,7 @@ ggplot(fit, aes(x=fit$fitted.values, y=fit$residuals)) + geom_point(size=2) + la
 geom_hline(yintercept = 0, color="red")+ theme_bw()
 
 ```
-<p align="justify"> Figura 4: Gráfico de resíduos *vs* valores ajustados. Uma vez que os pontos estão distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade dos resíduos quando comparamos os valores ajustados, há evidência de que a variância desses resíduos seja constante.</p>\n  
+<p align="justify"> Figura 4: Gráfico de resíduos versus valores ajustados. Uma vez que os pontos estão distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade dos resíduos quando comparamos os valores ajustados, há evidência de que a variância desses resíduos seja constante.</p>\n  
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 #Teste de Cochran - Homocedasticidade
@@ -142,9 +142,9 @@ geom_hline(yintercept = 0, color="red")+ theme_bw()
 ```
  
  
-<p align="justify"> $\quad$ Por fim, vamos verificar terceira suposição: a normalidade dos resíduos. Isso significa verificar se a distribuição de probabilidade associada ao conjunto de dados pode ser aproximada pela distribuição normal. Se os resíduos são normais, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão, como é mostrado na Figura 5. Um dos testes estatísticos mais conhecidos para verificar a normalidade é o Shapiro-Wilk, em que as hipóteses são: </p>
+<p align="justify"> $\quad$ Por fim, vamos verificar terceira suposição: a normalidade dos resíduos. Isso significa verificar se a distribuição de probabilidade associada ao conjunto de dados pode ser aproximada pela distribuição normal. Se os resíduos são normais, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão, como é mostrado na Figura 5. Um dos testes estatísticos mais conhecidos para verificar a normalidade é o *Shapiro-Wilk*, em que as hipóteses são: </p>
 
-$H_0:$ A amostra vem de uma distribuição Normal   vs   $H_1:$ A amostra não vem de uma distribuição Normal
+$H_0:$ A amostra vem de uma distribuição Normal   versus   $H_1:$ A amostra não vem de uma distribuição Normal
 
 
 <p align="justify"> $\quad$ E assim chegamos em conclusões similares aos outros testes: como p-valor encontrado é 0,7476 e é maior que o nível de significância, temos evidência estatística de normalidade dos resíduos. </p>
@@ -181,7 +181,7 @@ qqplot.data(residuals(fit))
 <p align="justify"> $\quad$ Se alguma das suposições acima não ocorrer, a linearidade não é satisfeita, uma vez que as suposições teóricas para ajuste da reta não são válidas. Para o nosso exemplo, a linearidade é satisfeita, uma vez que a reta está bem ajustada e os resíduos satisfazem as suposições do modelo de regressão, e também para todos os testes o p-valor foi maior que o nível de significância estabelecido. Um outro teste que complementa a avaliação do modelo de regressão é o Teste da Falta de Ajuste, que verifica se o modelo linear é adequado para o conjunto de dados ou não, testando as seguintes hipóteses: </p>
 
 
-$H_0:$ Modelo linear é adequado   vs    $H_1:$ Modelo linear não é adequado
+$H_0:$ Modelo linear é adequado   versus    $H_1:$ Modelo linear não é adequado
 
 
 <p align="justify"> $\quad$ Este teste assume que a normalidade, independência e homocedasticidade dos resíduos sejam satisfeitas (o que é válido no nosso exemplo). Assim, após o ajuste e análise de resíduos, é importante verificar se o modelo linear é adequado. Como podemos ver na Tabela 3, o p-valor encontrado para a falta de ajuste foi 0,7676, sendo é maior que o nível de significância 0,05, ou seja, como não rejeita-se $H_0$, há evidências de que o modelo linear é adequado para esse conjunto de dados. </p>
