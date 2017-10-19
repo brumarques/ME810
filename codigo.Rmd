@@ -37,10 +37,10 @@ ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Ass
 
 |        | Concentração | Área     |
 |--------|---:|---:|
-| Mínimo | `r min(data$Concentração)` | `r formatC(min(data$Área), digits = 6)`  |
-| Máximo | `r max(data$Concentração)` | `r formatC(max(data$Área), digits = 7)`  |
-| Média  | `r mean(data$Concentração)`| `r formatC(mean(data$Área), digits = 7)` |
-| Desvio Padrão  | `r round(sd(data$Concentração),2)`| `r formatC(sd(data$Área), digits = 6)` |
+| Mínimo | `r formatC(min(data$Concentração),dec=",")` | `r formatC(min(data$Área), digits = 6,dec=",")`  |
+| Máximo | `r formatC(max(data$Concentração),dec=",")` | `r formatC(max(data$Área), digits = 7,dec=",")`  |
+| Média  | `r formatC(mean(data$Concentração),dec=",")`| `r formatC(mean(data$Área), digits = 7,dec=",")` |
+| Desvio Padrão  | `r formatC(round(sd(data$Concentração),2),dec=",")`| `r formatC(sd(data$Área), digits = 6,dec=",")` |
 
 <p align="justify"> Tabela 1: Medidas resumo do conjunto de dados. Máximo e Mínimo corresponde ao maior e ao menor valor observado, respectivamente, em relação à cada variável. A Média é a média aritmética das observações de cada variável, e por fim o Desvio Padrão é uma medida de dispersão em torno da Média.</p>\n  
 
@@ -72,8 +72,8 @@ ou seja, $a= 33675,67$ e $b= 515,12$ O coeficiente de correlação obtido é $R^
 
 | Parâmetro 	| Estimativa                                          	| p-valor                             	|
 |-----------	|---:	|---:	|
-| a         	| `r  format(coefficients(fit)[2], scientific=FALSE)` 	| `r round(summary(fit)$coefficients[2,4],1)`  	|
-| b         	| `r round(coefficients(fit)[1], 2)`                  	| `r round(summary(fit)$coefficients[1,4],1)`  	|    
+| a         	| `r  format(coefficients(fit)[2], scientific=FALSE,dec=",")` 	| `r round(summary(fit)$coefficients[2,4],1)`  	|
+| b         	| `r format(round(coefficients(fit)[1],2),scientific=FALSE,dec=",")`                  	| `r round(summary(fit)$coefficients[1,4],1)`  	|    
 
 <p align="justify"> Tabela 2: Tabela resultado da ANOVA - Estimativas e p-valor dos parâmetros da reta ajustada. </p>\n  
 
@@ -196,8 +196,8 @@ library(alr3)
 |                  | Teste de Falta de Ajuste |         |
 |---:|---:|---:|
 |                  |       Estatística        | P-valor |
-|   Concentração   |              07.3965e+08 | <0.0001 |
-| Falta de ajuste  |               3.8090e-01 |  0.7676 |
+|   Concentração   |              07,3965e+08 | <0,0001 |
+| Falta de ajuste  |               3,8090e-01 |  0,7676 |
 
 <p align="justify"> Tabela 3: Resultados do Teste de Falta de Ajuste.</p>\n  
  
