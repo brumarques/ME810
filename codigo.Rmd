@@ -201,7 +201,7 @@ lack<-pureErrorAnova(fit)
 
 
 
-<p align="justify"> Tabela 3: Resultados do Teste de Falta de Ajuste. Como temos um p-valor muito grande para a falta de ajuste (0,7676), não rejeita-se a hipótese de que o modelo linear é adequado, isto é, há evidência de que o modelo linear ajustado.</p>\n  
+<p align="justify"> Tabela 3: Resultados do Teste de Falta de Ajuste. Como temos um p-valor muito grande para a falta de ajuste (0,7676), não rejeita-se a hipótese de que o modelo linear é adequado, isto é, há evidência de que o modelo linear ajustado é adequado.</p>\n  
 
 
 # Conclusão
