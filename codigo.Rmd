@@ -27,6 +27,7 @@ $\quad$ Se houver suspeita de que algum valor não esteja correto, deve-se reali
 library(readxl) #biblioteca para ler o excel
 library(knitr)
 library(ggplot2)
+options(OutDec= ",")
 data <- read_excel("C:/Users/Bruna Marques/Desktop/ME810-master/data.xlsx") #leitura dos dados
 #plot(data, main="Gráfico de Dispersão", xlab="Concentração", ylab="Área") #grafico de dispersao
 ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Associação entre Área e Concentração",x="Concentração", y = "Área") + theme_bw()
