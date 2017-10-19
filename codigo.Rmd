@@ -115,8 +115,7 @@ ggplot(fit, aes( x=x1,y=respad)) +
 
 ```
 
-<p align="justify">Figura 3: Gráfico de resíduos padronizados *vs* ordem de coleta.</p>\n  
-
+<p align="justify">Figura 3: Gráfico de resíduos padronizados *vs* ordem de coleta. Os valores dos resíduos são apresentados seguindo a ordem da coleta dos dados, então se os pontos estiverem distribuídos de forma aleatória em torno de zero e dentro dos limites, é uma evidência de independência dos resíduos, como foi observado para esse gráfico.</p>\n  
 
 <p align="justify"> $\quad$ A segunda suposição a ser verificada é a homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos *versus* valores ajustados. Se os pontos estiverem distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade, a homocedasticidade é satisfeita (Figura 4). Para complementar a análise, um teste estatístico que pode ser feito é o Teste de Cochran, que compara a maior variância com as demais. As hipóteses são dadas por: </p>
 
