@@ -189,18 +189,19 @@ $H_0:$ Modelo linear é adequado   versus    $H_1:$ Modelo linear não é adequa
 
 ```{r,echo=FALSE, warning=FALSE, message=FALSE }
 library(alr3)
-#pureErrorAnova(fit)
+lack<-pureErrorAnova(fit)
 ```
 
 
-|                  | Teste de Falta de Ajuste |         |
-|---:|---:|---:|
-|                  |       Estatística        | P-valor |
-|   Concentração   |              07,3965e+08 | <0,0001 |
-| Falta de ajuste  |               3,8090e-01 |  0,7676 |
+|  	| Estatística                                          	| p-valor                             	|
+|-----------	|---:	|---:	|
+| Concentração         	| `r  format((lack[1,4]), scientific=FALSE,dec=",")` 	| `r round((lack[1,5]),1)`  	|
+| Falta de ajuste         	| `r format((round((lack[3,4]),2)),scientific=FALSE,dec=",")`                  	| `r round((lack[3,5]),4)`  	|    
 
-<p align="justify"> Tabela 3: Resultados do Teste de Falta de Ajuste.</p>\n  
- 
+
+
+<p align="justify"> Tabela 3: Resultados do Teste de Falta de Ajuste. Como temos um p-valor muito grande para a falta de ajuste (0,7676), não rejeita-se a hipótese de que o modelo linear é adequado, isto é, há evidência de que o modelo linear ajustado.</p>\n  
+
 
 # Conclusão
 
