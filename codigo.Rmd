@@ -1,12 +1,53 @@
 ---
-title: "Validari - Linearidade"
-author: "Estatística 2017"
-date: "11 de setembro de 2017"
+title: ''
+geometry: left=30mm, right=20mm, top=30mm, bottom=20mm
+header-includes:
+- \usepackage{setspace}
+- \usepackage{pslatex}
+- \usepackage{subfigure}
+- \usepackage{subfigmat}
+- \usepackage{indentfirst}
+- \usepackage{float}
 output:
-  pdf_document: default
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
   html_document: default
-header-includes: \usepackage{bbm}
+  mainfont: Times New Roman
+  fig_caption: yes
+setspace: dublespacing
+fontsize: 11pt
 ---
+
+\setlength{\parindent}{0.5cm}
+
+\begin{titlepage}
+\begin{center}
+{\large Universidade Estadual de Campinas - UNICAMP}\\[0.3cm]
+{\large Instituto de Matemática, Estatística e Computação Científica}\\[0.3cm]
+{\large Departamento de Estatística}\\[4.5cm]
+  
+
+
+
+{\bf \huge Validari - Linearidade}\\[7.5cm]
+
+{\large Ana Flávia Polisel 157672}\\[0.3cm]
+{\large Bruna Nascimento Marques 135143}\\[0.3cm]
+{\large Melissa Pelermo 140830}\\[0.3cm]
+{\large Welligton Takao Tanaka 093259}\\[2.1cm]
+
+
+{\large Setembro/2017}\\[0.3cm]
+\end{center}
+
+\end{titlepage}
+
+
+---
+
+
+
 
 # Introdução
 
@@ -15,12 +56,38 @@ header-includes: \usepackage{bbm}
    <p align="justify"> $\quad$ A Agência Nacional de Vigilância Sanitária (Anvisa) possui normas com sugestões de análises para cada critério da validação de métodos analíticos. Porém, algumas sugestões são muito subjetivas, dificultando o trabalho de validação.  </p>
    <p align="justify"> $\quad$ Por isso, o objetivo do nosso projeto é avaliar e revisar a metodologia estatística usada para validação da Linearidade, explicando de forma clara o passo a passo da metodologia mais adequada. Todas as análises, gráficos e tabelas foram feitos no *software* R. </p>
 
+# Material
+  <p align="justify"> $\quad$ Para exemplificar e facilitar o entendimento da  análise descritiva e da metodologia estatística adequada, vamos utilizar um conjunto de dados simulados disponível em: http://www.portalaction.com.br/validacao-de-metodologia-analitica/112-linearidade, as observações são da concentração de um analito em uma amostra e sua respectiva área do pico do gráfico que é o resultado liberado do equipamento. A seguir temos o inicio do banco de dados utilizados: </p>
+  
+ | Concentração | Area     |
+|--------------|----------|
+| 0,24         | 8597,852 |
+| 0,24         | 8597,852 |
+| 0,24         | 8596,783 |
+| 0,24         | 8596,908 |
+| 0,24         | 8597,301 |
+| 0,24         | 8597,496 |
+| 0,27         | 9607,390 |
+| 0,27         | 9607,714 |
+| 0,27         | 9607,443 |
+| 0,27         | 9608,133 |
+| 0,27         | 9607,176 |
+| 0,27         | 9607,247 |
 
+
+ <p align="justify"> $\quad$ Temos 5 valores de concentração, e para cada valor foi realizada 6 vezes a medição no equipamento, o resultado dessa medição é a área apresentada. Observamos que para cada concentração temos valores muito próximos para a área, o que é o esperado, pois a variação o equipamento é muito pequena.</p>
+ 
 # Análise Descritiva   
 
-<p align="justify"> $\quad$ Quando se tem um conjunto de dados, a análise descritiva é o primeiro passo que deve ser feito, pois fornece resumos simples sobre a amostra e sobre as variáveis observadas. Tal resumo pode ser quantitativo ou visual, com tabelas, gráficos e figuras. Para exemplificar a análise descritiva e a metodologia estatística adequada, vamos utilizar um conjunto de dados disponível em: http://www.portalaction.com.br/validacao-de-metodologia-analitica/112-linearidade, as observações são da concentração de um analito em uma amostra e sua respectiva área.  </p>
+<p align="justify"> $\quad$ Quando se tem um conjunto de dados, a análise descritiva é o primeiro passo que deve ser feito, pois fornece resumos simples sobre a amostra e sobre as variáveis observadas. Tal resumo pode ser quantitativo ou visual, com tabelas, gráficos e figuras.  </p>
   <p align="justify">$\quad$ Como no caso de validação de métodos analíticos as variáveis são “concentração” e “área”, sabemos que ambas são **positivas** e **não nulas**, ou seja, maiores que zero. Sugerimos então, fazer um gráfico de dispersão e calcular as medidas resumo para começar a entender melhor como os dados se comportam.  </p> 
-<p align="justify">$\quad$ Pelo gráfico de dispersão (Figura 1), é possível observar como é a relação entre as duas variáveis, se há valores discrepantes ou se há alguma inconsistência nos dados (erro de digitação, por exemplo). Pelas medidas resumo (Tabela 1), verificamos se os valores tem as características esperadas. Tais medidas consistem em valores máximo e mínimo, média e desvio padrão, para cada uma das variáveis. </p>  
+  
+<p align="justify">$\quad$ Pelo gráfico de dispersão (Figura 1), é possível observar como é a relação entre as duas variáveis, se há valores discrepantes ou se há alguma inconsistência nos dados (erro de digitação, por exemplo). Pelas medidas resumo (Tabela 1), verificamos se os valores tem as características esperadas citadas anteriormente. Tais medidas consistem em valores máximo e mínimo, média e desvio padrão, para cada uma das variáveis. </p>  
+
+## O gráfico de dispersão utiliza coordenadas cartesianas para exibir valores do conjunto de dados. Os dados são exibidos como uma coleção de pontos, cada um com os valores observados da “Concentração” determinando a posição no eixo horizontal e o valor da “Área” determinando a posição no eixo vertical . Por exemplo, vemos que para uma área de 8560 observamos  uma concentração de 0,24##
+
+##Máximo e Mínimo corresponde ao maior e ao menor valor observado, respectivamente, em relação à cada variável. A Média é a média aritmética das observações de cada variável, e por fim o Desvio Padrão é uma medida de dispersão em torno da Média##
+
 <p align="justify">$\quad$ Se houver suspeita de que algum valor não esteja correto, deve-se realizar uma análise mais aprofundada para confirmar, lembrando que **não** devemos retirar um valor da amostra, por mais que ele seja muito diferente dos demais, exceto quando há **certeza** de que foi um erro humano ou falha do equipamento.</p>  
 
 ```{r, echo=FALSE, warning=FALSE,fig.align='center', message=FALSE, fig.width = 5, fig.height = 3}
@@ -34,7 +101,10 @@ ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Ass
 
 ```
 
-<p align="justify">\textit{Figura 1}: O gráfico de dispersão utiliza coordenadas cartesianas para exibir valores do conjunto de dados. Os dados são exibidos como uma coleção de pontos, cada um com os valores observados da “Concentração” determinando a posição no eixo horizontal e o valor da “Área” determinando a posição no eixo vertical . Por exemplo, vemos que para uma área de 8560 observamos  uma concentração de 0,24.</p>  
+<p align="justify">\textit{Figura 1}: No gráfico de dispersão temos os valores da variável Area no eixo x e da variável Concentração no eixo y.Por exemplo, vemos que para uma área de 8597 temos uma concentração de 0,24, observamos qua as variáveis tem uma relação linear, quanto maior a área, maior a concentração.</p>  
+
+
+<p align="justify"> \textit{Tabela 1:} A tabela apresenta as medidas resumo do conjunto de dados, que são: mínimo, máximo, média e desvio padrão. Observamos que o valor mínimo 0,24, é positivo e não nulo, ou seja, todos os outros valores também vão ser, confirmando assim a suposição das variáveis.</p>  
 
 |        | Concentração | Área     |
 |--------|---:|---:|
@@ -43,7 +113,6 @@ ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Ass
 | Média  | `r formatC(mean(data$Concentração),dec=",")`| `r formatC(mean(data$Área), digits = 7,dec=",")` |
 | Desvio Padrão  | `r formatC(round(sd(data$Concentração),2),dec=",")`| `r formatC(sd(data$Área), digits = 6,dec=",")` |
 
-<p align="justify"> \textit{Tabela 1:} Medidas resumo do conjunto de dados. Máximo e Mínimo corresponde ao maior e ao menor valor observado, respectivamente, em relação à cada variável. A Média é a média aritmética das observações de cada variável, e por fim o Desvio Padrão é uma medida de dispersão em torno da Média.</p>  
 
 
 # Regressão Linear e Significância dos Parâmetros (Curva Analítica)  
@@ -59,24 +128,27 @@ ggplot(data, aes(x=data[,1], y=data[,2])) + geom_point(size=3) + labs(title="Ass
 
 ```
 
-<p align="justify"> \textit{Figura 2:} Gráfico de dispersão com a reta de regressão ajustada, que mostra a variável “Área” em função da “Concentração”. A reta de regressão passa em cima dos pontos.</p>
+<p align="justify"> \textit{Figura 2:} Gráfico de dispersão das variáveis Area e Concentração com a reta de regressão linear ajustada passando perfeitamente pelos pontos.</p>
 
-<p align="justify"> $\quad$ Na Figura 2, temos a reta de regressão ajustada (curva analítica), podemos notar que os pontos se alinham bem a uma reta. A equação dessa reta é dada por: 
-$$ Área = 515,12 + 33675,67 *Concentração $$
-ou seja, $a= 33675,67$ e $b= 515,12$ O coeficiente de correlação obtido é $R^2 \approx 1$ , lembrando que a Anvisa sugere que o $R^2$ esteja acima de $0,990$ .</p>  
+<p align="justify"> $\quad$ Na Figura 2, temos a reta de regressão ajustada (curva analítica), podemos notar que os pontos se alinham perfeitamente a uma reta. A equação dessa reta é dada por: 
+$$ Area = 515,12 + 33675,67 *Concentracao $$
+ou seja, $a= 33675,67$ e $b= 515,12$. O coeficiente de correlação obtido é $R^2 = 1$ , lembrando que a Anvisa sugere que o $R^2$ esteja acima de $0,990$ .</p>  
 
 
 # Qualidade de Ajuste do Modelo
 
-<p align="justify"> $\quad$ Após determinarmos a metodologia e ajustarmos o modelo, é necessário verificar a qualidade do ajuste do modelo aos dados. Algumas técnicas podem ser utilizadas, dentre elas a “Análise de Variância da Regressão” (ANOVA), que é uma das mais utilizadas.  
-  Considerando o nosso exemplo, o resultado da ANOVA é mostrado na Tabela 2.</p> 
+<p align="justify"> $\quad$ Após determinarmos a metodologia e ajustarmos o modelo, é necessário verificar a qualidade do ajuste do modelo aos dados. Algumas técnicas podem ser utilizadas, dentre elas a “Análise de Variância da Regressão” (ANOVA), que é uma das mais utilizadas. Os resultados da ANOVA são as estimativas para os parâmetros $a$ e $b$, onde o parâmetro $b$ é chamado intercepto e representa o ponto em que a curva analítica corta o eixo dos y's, quando Concentração = 0. E o parâmetro $a$ representa a inclinação da curva analítica e é dito coeficiente angular. O p-valor dos parâmetros da reta ajustada é a probabilidade de se obter uma estatística de teste igual ou mais extrema que aquela observada em uma amostra, sob a hipótese nula. A hipótese nula é de que os parâmetros são iguais a zero. </p>
+
+  <p align="justify"> $\quad$ Considerando o nosso exemplo, o resultado da ANOVA é mostrado na Tabela 2:</p> 
+
+
+<p align="justify">\textit{Tabela 2:} Tabela resultado da ANOVA - observamos que ambos os p-alores são zero, ou seja, há evidências de que a concentração tem uma associação linear com a área, em um modelo cujo coeficiente angular é diferente de zero. </p>
 
 | Parâmetro 	| Estimativa                                          	| p-valor                             	|
 |-----------	|---:	|---:	|
 | a         	| `r  format(coefficients(fit)[2], scientific=FALSE,dec=",")` 	| `r round(summary(fit)$coefficients[2,4],1)`  	|
 | b         	| `r format(round(coefficients(fit)[1],2),scientific=FALSE,dec=",")`                  	| `r round(summary(fit)$coefficients[1,4],1)`  	|    
 
-<p align="justify">\textit{Tabela 2:} Tabela resultado da ANOVA - Estimativas  para os parêmetros $a$ e $b$, onde o parâmetro $b$ é chamado intercepto e representa o ponto em que a curva analítica corta o eixo dos y's, quando Concentração = 0. E o parâmetro $a$ representa a inclinação da curva analítica e é dito coeficiente angular. O p-valor dos parâmetros da reta ajustada é a é a probabilidade de se obter uma estatística de teste igual ou mais extrema que aquela observada em uma amostra, sob a hipótese nula. A hipótese nula é de que os parâmetros são iguais a zero. </p>
 
 <p align="justify"> $\quad$ Para avaliar a significância dos parâmetros (*a* e *b*), ou seja, se eles são diferentes de zero, vamos observar o p-valor. Dado que o nível de significância sugerido pela Anvisa é 5%, se o p-valor for menor que 0,05 há evidências de que a concentração tem uma associação linear com a área, em um modelo cujo coeficiente angular é diferente de zero (lembrando que dentre as sugestões da Anvisa, o coeficiente angular deve ser significativamente diferente de zero). Para o nosso exemplo, os dois parâmetros são significativos, uma vez que o p-valor de ambos é menor que 0,05. </p>  
 
@@ -84,12 +156,12 @@ ou seja, $a= 33675,67$ e $b= 515,12$ O coeficiente de correlação obtido é $R^
 # Diagnóstico do Modelo - Análise de Resíduos
 
 <p align="justify"> $\quad$ O ajuste de uma reta de regressão é feito baseado em suposições teóricas. Para verificar se a reta de regressão ajustada satisfaz as suposições teóricas da metodologia estatística, devemos avaliar três suposições relacionadas ao resíduo. São elas: Independência, Homocedasticidade e Normalidade. Podemos fazer análises gráficas e também testes estatísticos específicos para cada uma delas, para assim constatar se as três suposições são válidas. </p> 
-<p align="justify"> $\quad$ A independência pode ser confirmada, se no gráfico de resíduos *versus* ordem da coleta, os pontos estiverem distribuídos de forma aleatória em torno de zero e dentro dos limites, assim como na Figura 3. Podemos fazer também o teste Durbin-Watson, que é utilizado para detectar a presença de autocorrelação (dependência), representada por $\rho$ . Temos que os resíduos são independentes se, dada as hipóteses: </p> 
+<p align="justify"> $\quad$ A independência pode ser verificada, se no gráfico de resíduos *versus* ordem da coleta, os pontos estiverem distribuídos de forma aleatória em torno de zero e dentro dos limites, assim como na Figura 3. Podemos fazer também o teste Durbin-Watson, que é utilizado para detectar a presença de autocorrelação (dependência), representada por $\rho$ . Temos que os resíduos são independentes se, dada as hipóteses: </p> 
   
  \begin{center} $H_0: \rho  = 0$   versus   $H_1: \rho  \neq  0$ \end{center}
   
   
-<p align="justify"> não rejeitamos $H_0$ se o p-valor obtido for maior que o nível de significância, isso significa que não rejeitamos a hipótese de que a correlação é zero, ou seja, há evidências de independência. O p-valor encontrado foi de 0,3554, ou seja, temos evidências de que os resíduos são independentes, com nível de significância de 0,05. Já pelo gráfico da Figura 3, podemos observar que os pontos estão dispersos aleatoriamente, o que é mais uma evidência de que os resíduos são independentes. </p> 
+<p align="justify"> não rejeitamos $H_0$ se o p-valor obtido for maior que o nível de significância, isso significa que não rejeitamos a hipótese de que a correlação é zero, ou seja, há evidências de independência. O p-valor encontrado para nosso exemplo foi de 0,3554, ou seja, temos evidências de que os resíduos são independentes, com nível de significância de 0,05. Já pelo gráfico da Figura 3, podemos observar que os pontos estão dispersos aleatoriamente, o que é mais uma evidência de que os resíduos são independentes. </p> 
 
 ```{r, echo=FALSE, warning=FALSE, results=FALSE}
 #Teste de Durbin-Watson - Independencia
@@ -121,9 +193,9 @@ ggplot(fit, aes( x=x1,y=respad)) +
 <p align="justify"> $\quad$ A segunda suposição a ser verificada é a homocedasticidade, isto é, se a variância dos resíduos é constante. Uma forma de fazer isso é gerando o gráfico de resíduos versus valores ajustados. Se os pontos estiverem distribuídos de forma aleatória, sem uma tendência de aumento ou diminuição de variabilidade, a homocedasticidade é satisfeita (Figura 4). Para complementar a análise, um teste estatístico que pode ser feito é o Teste de *Cochran*, que compara a maior variância com as demais. As hipóteses são dadas por: </p>
 
 
-\begin{center} $H_0: \sigma^2 _1=\sigma^2_2=...=\sigma^2_k$   versus   $H_1:$ pelo menos um $\sigma^2_i$ é diferente, $i=1,...k$ \end{center}
+\begin{center} $H_0: \sigma^2 _1=\sigma^2_2=...=\sigma^2_k$   versus   $H_1:$ pelo menos um $\sigma^2_i$ é diferente, $i=1,...k$, onde $k$ é o número de amostras \end{center}
 
- e do mesmo modo como teste anterior, os resíduos são homocedásticos se p-valor for maior que o nível de significância. O p-valor encontrado foi de 0,409, então há evidência estatística de que os resíduos do modelo são homocedásticos, a nível de 5% de significância. Ou seja, não detectamos diferença significativa entre as variâncias dos resíduos do modelo.</p>
+ e do mesmo modo como teste anterior, os resíduos são homocedásticos se p-valor for maior que o nível de significância. No nosso exemplo $k=30$, e o p-valor encontrado foi de 0,409, então há evidência estatística de que os resíduos do modelo são homocedásticos, a nível de 5% de significância. Ou seja, não detectamos diferença significativa entre as variâncias dos resíduos do modelo.</p>
 
 ```{r,echo=FALSE,fig.align='center', fig.width = 5,fig.height = 3}
 #plot(fit$fitted.values,residuals(fit),ylab="Resíduos",xlab="Valores ajustados"); abline(h=0)
@@ -141,12 +213,15 @@ geom_hline(yintercept = 0, color="red")+ theme_bw()
 ```
  
  
-<p align="justify"> $\quad$ Por fim, vamos verificar terceira suposição: a normalidade dos resíduos por meio do gráfico quantil-quantil (q-q) que é uma ferramenta muito útil para checar adequação de distribuição de frequência dos resíduos à distribuição Normal. O gráfico q-q é melhor que o histograma e o gráfico de distribuição acumulada empírica, pois temos mais habilidade para verificar se uma reta se ajusta aos pontos do que se uma curva de densidade se ajusta a um histograma ou uma curva de probabilidade acumulada se ajusta à acumulada empírica. Se os resíduos são normais, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão, como é mostrado na Figura 5. Conjuntamente com a análise gráfica, vamos utilizar um dos testes estatísticos mais conhecidos para verificar a normalidade, o teste de *Shapiro-Wilk*, em que as hipóteses são: </p>
+<p align="justify"> $\quad$ Por fim, vamos verificar terceira suposição: a normalidade dos resíduos por meio do gráfico quantil-quantil (q-q) que é um método gráfico para comparar duas distribuições de probabilidade, traçando seus quantis uns contra os outros. Primeiro, o conjunto de intervalos para os quantis é escolhido, neste caso os quantis de uma distrbuição Normal. Um ponto (x, y) no gráfico corresponde a um dos quantis da segunda distribuição (coordenada y) plotadas contra o mesmo mesmo quantil da primeira distribuição de (coordenada x). Portanto, a linha é uma curva paramétrica com o parâmetro que é o (número do) intervalo para quantil.
+((((que é uma ferramenta muito útil para checar adequação de distribuição de frequência dos resíduos à distribuição Normal. O gráfico q-q é melhor que o histograma e o gráfico de distribuição acumulada empírica, pois temos mais habilidade para verificar se uma reta se ajusta aos pontos do que se uma curva de densidade se ajusta a um histograma ou uma curva de probabilidade acumulada se ajusta à acumulada empírica.))) </p>
+
+<p align="justify"> $\quad$ Se os resíduos são normais, os pontos do gráfico devem estar próximos e em torno da reta, de forma aleatória, sem seguir nenhum padrão, como é mostrado na Figura 5. Conjuntamente com a análise gráfica, vamos utilizar um dos testes estatísticos mais conhecidos para verificar a normalidade, o teste de *Shapiro-Wilk*, em que as hipóteses são: </p>
 
  \begin{center} $H_0$: A amostra vem de uma distribuição Normal   versus   $H_1$: A amostra não vem de uma distribuição Normal \end{center}
 
 
-<p align="justify"> $\quad$ E assim chegamos em conclusões similares aos outros testes: como p-valor encontrado é 0,7476 e é maior que o nível de significância, temos evidência estatística de normalidade dos resíduos. </p>
+<p align="justify"> $\quad$ E assim, no exemplo demonstrado, chegamos em conclusões similares aos outros testes: como p-valor encontrado é 0,7476 e é maior que o nível de significância, temos evidência estatística de normalidade dos resíduos. </p>
 
 
 ```{r,echo=FALSE,fig.align='center', message=FALSE, fig.width = 5,fig.height = 3}
@@ -169,7 +244,7 @@ qqplot.data(residuals(fit))
 
 ```
 
-<p align="justify"> \textit{Figura 5:} O gráfico Quantil-Quantil dos resíduos é um método gráfico para comparar duas distribuições de probabilidade, traçando seus quantis uns contra os outros. Primeiro, o conjunto de intervalos para os quantis é escolhido, neste caso os quantis de uma distrbuição Normal. Um ponto (x, y) no gráfico corresponde a um dos quantis da segunda distribuição (coordenada y) plotadas contra o mesmo mesmo quantil da primeira distribuição de (coordenada x). Portanto, a linha é uma curva paramétrica com o parâmetro que é o (número do) intervalo para quantil.</p>  
+<p align="justify"> \textit{Figura 5:} Apresenta o gráfico Quantil-Quantil, observamos que os pontos estão bem dispostos em torno da reta, ou seja, seguem uma distribuição normal, e assim a última suposição foi validada.</p>  
 
 
 
@@ -191,16 +266,13 @@ qqplot.data(residuals(fit))
 library(alr3)
 lack<-pureErrorAnova(fit)
 ```
-
+<p align="justify">\textit{Tabela 3:} Resultados do Teste de Falta de Ajuste. Como temos um p-valor muito grande para a falta de ajuste (0,7676), não rejeita-se a hipótese de que o modelo linear é adequado, isto é, há evidência de que o modelo linear ajustado.</p> 
 
 |  	| Estatística                                          	| p-valor                             	|
 |-----------	|---:	|---:	|
 | Concentração         	| `r  format((lack[1,4]), scientific=FALSE,dec=",")` 	| `r round((lack[1,5]),1)`  	|
 | Falta de ajuste         	| `r format((round((lack[3,4]),2)),scientific=FALSE,dec=",")`                  	| `r round((lack[3,5]),4)`  	|    
 
-
-
-<p align="justify">\textit{Tabela 3:} Resultados do Teste de Falta de Ajuste. Como temos um p-valor muito grande para a falta de ajuste (0,7676), não rejeita-se a hipótese de que o modelo linear é adequado, isto é, há evidência de que o modelo linear ajustado.</p> 
 
 
 # Conclusão
